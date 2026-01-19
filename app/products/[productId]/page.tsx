@@ -1,25 +1,36 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 // app/products/[productId]/page.tsx
 import { Metadata } from "next";
 import Image from "next/image";
 import { products } from "../data";
 
-// Metadata generator
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const product = products.find((p) => p.id === params.productId);
+// Metadata
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ productId: string }>;
+}): Promise<Metadata> {
+  const { productId } = await params;
+
+  const product = products.find((p) => String(p.id) === productId);
 
   return {
     title: product ? product.name : "Product not found",
   };
 }
 
-// Page component
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function ProductDetails({ params }: any) {
-  const product = products.find((p) => p.id === params.productId);
+// Page
+export default async function ProductDetails({
+  params,
+}: {
+  params: Promise<{ productId: string }>;
+}) {
+  const { productId } = await params;
 
-  if (!product) return <h1>Product not found</h1>;
+  const product = products.find((p) => String(p.id) === productId);
+
+  if (!product) {
+    return <h1>Product not found</h1>;
+  }
 
   return (
     <div className="p-6">
