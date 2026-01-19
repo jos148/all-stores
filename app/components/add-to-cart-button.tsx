@@ -8,6 +8,7 @@ type CartItem = {
   name: string;
   price: number;
   image: string;
+  quantity: number;
 };
 
 type Props = {
@@ -45,7 +46,7 @@ export default function AddToCartButton({ item }: Props) {
       )}
 
       {quantity === 0 && (
-        <Button size="sm" onClick={() => add(item)}>
+        <Button size="sm" onClick={() => add({ ...item, quantity: 1 })}>
           Add to Cart
         </Button>
       )}

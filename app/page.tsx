@@ -1,5 +1,5 @@
 
-export { default } from "./home/page.tsx";
+export { default } from "./home/page";
 
 //https://supabase.com/dashboard/new/vawemyehfozcmfinuivt
 

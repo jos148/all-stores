@@ -1,14 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// app/products/[productId]/page.tsx
 import { Metadata } from "next";
 import Image from "next/image";
 import { products } from "../data";
 
-// Define the params type
-interface ProductPageParams {
-  params: { productId: string };
-}
-
-// Metadata function
-export function generateMetadata({ params }: ProductPageParams): Metadata {
+// Metadata generator
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const product = products.find((p) => p.id === params.productId);
 
   return {
@@ -17,12 +15,11 @@ export function generateMetadata({ params }: ProductPageParams): Metadata {
 }
 
 // Page component
-export default function ProductDetails({ params }: ProductPageParams) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function ProductDetails({ params }: any) {
   const product = products.find((p) => p.id === params.productId);
 
-  if (!product) {
-    return <h1>Product not found</h1>;
-  }
+  if (!product) return <h1>Product not found</h1>;
 
   return (
     <div className="p-6">

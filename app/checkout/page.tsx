@@ -7,8 +7,8 @@ export default async function CheckoutPage() {
 //const {
   //data: { user },
 //} = await supabase.auth.getUser()
-
+const user = null;
 
   //return <CheckoutForm user={user} />;
-  return <CheckoutForm />;
+  return <CheckoutForm user={user} />;
 }

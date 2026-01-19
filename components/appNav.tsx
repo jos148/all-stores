@@ -14,7 +14,7 @@ interface AppNavProps {
 
 const AppNav = ({ isAuthenticated }: AppNavProps) => {
   const { theme, setTheme } = useTheme();
-  const totalItems = useCartStore((state) => state.totalItems());
+  const totalItems = useCartStore((state) => state.items?.length || 0);
 
   return (
     <div className="w-full dark:bg-amber-950 flex items-center justify-between p-2 border-b border-b-amber-200 dark:border-b-amber-700 sticky top-0 z-50 bg-white">
