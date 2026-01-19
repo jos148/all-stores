@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { products } from "../data";
 
-type Props = {
-  params: {
-    productId: string;
-  };
-};
+// Define the params type
+interface ProductPageParams {
+  params: { productId: string };
+}
 
-export function generateMetadata({ params }: Props): Metadata {
+// Metadata function
+export function generateMetadata({ params }: ProductPageParams): Metadata {
   const product = products.find((p) => p.id === params.productId);
 
   return {
@@ -16,7 +16,8 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function ProductDetails({ params }: Props) {
+// Page component
+export default function ProductDetails({ params }: ProductPageParams) {
   const product = products.find((p) => p.id === params.productId);
 
   if (!product) {
