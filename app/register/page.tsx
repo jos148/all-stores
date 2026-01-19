@@ -72,9 +72,13 @@ export default function RegisterPage() {
               required
             />
           </div>
-          <Button className="btn">Create Account</Button>
+          <Button className="btn" disabled={loading} type="submit">
+            Create Account
+          </Button>
           <Link href="/login">
-          <Button variant="link" className="mx-auto">Already have an account? Login</Button>
+            <Button variant="link" className="mx-auto">
+              Already have an account? Login
+            </Button>
           </Link>
         </div>
       </form>

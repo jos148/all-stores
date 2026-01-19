@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import AppNav from "../components/appNav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner"
 import AppNavWrapper from "./components/AppNavWrapper";
 import Footer from "./components/footer";
-import SupabaseProvider from "@/lib/supabase/provider";
+//import SupabaseProvider from "@/lib/supabase/provider";
 
 
 export const metadata: Metadata = {

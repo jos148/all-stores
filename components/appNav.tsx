@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Moon, ShoppingCart, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { LogoutButton } from "@/app/components/logout-button";
+//import { LogoutButton } from "@/app/components/logout-button";
 import { useCartStore } from "@/lib/cart-store";
 
 interface AppNavProps {
@@ -12,7 +12,7 @@ interface AppNavProps {
   email?: string;
 }
 
-const AppNav = ({ isAuthenticated, email }: AppNavProps) => {
+const AppNav = ({ isAuthenticated }: AppNavProps) => {
   const { theme, setTheme } = useTheme();
   const totalItems = useCartStore((state) => state.totalItems());
 

@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CartList({ user }: { user: any }) {
-  const { items, increase, decrease, remove, clear } = useCartStore();
+export default function CartList() {
+  const { items, increase, decrease, remove } = useCartStore();
 
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,

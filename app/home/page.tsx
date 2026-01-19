@@ -1,5 +1,3 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import Link from 'next/link';
 import React from 'react'
 import Hero from './components/hero';
 import Categories from './components/categories';
