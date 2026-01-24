@@ -1,6 +1,6 @@
 import Link from "next/link";
 //import { getAuthUser } from "@/lib/auth";
-import { LogoutButton } from "@/app/components/logout-button";
+import LogoutButton from "@/app/components/LogoutButton";
 
 interface User {
   email: string;

@@ -8,5 +8,5 @@ export default async function AppNavWrapper() {
 //} = await supabase.auth.getUser();
 //} = await supabase.auth.getUser();
 
-  return <AppNav isAuthenticated={false}  />;
+  return <AppNav  />;
 }

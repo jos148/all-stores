@@ -1,14 +1,19 @@
+// models/User.ts
 import mongoose from "mongoose";
 
-const OrderSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
-    receiptCode: String,
-    name: String,
-    phone: String,
-    location: String,
-    items: Array,
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true },
 );
 
-export default mongoose.models.Order || mongoose.model("Order", OrderSchema);
+export default mongoose.models.User || mongoose.model("User", UserSchema);

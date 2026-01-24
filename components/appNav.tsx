@@ -4,17 +4,35 @@ import { Button } from "@/components/ui/button";
 import { Moon, ShoppingCart, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-//import { LogoutButton } from "@/app/components/logout-button";
+import LogoutButton from "@/app/components/LogoutButton";
 import { useCartStore } from "@/lib/cart-store";
+import { useState } from "react";
+import { supabase } from "@/lib/supabase/client";
+import { useEffect } from "react";
 
-interface AppNavProps {
-  isAuthenticated: boolean;
-  email?: string;
-}
 
-const AppNav = ({ isAuthenticated }: AppNavProps) => {
+const AppNav = () => {
   const { theme, setTheme } = useTheme();
+  const [email, setEmail] = useState<string | null>(null);
   const totalItems = useCartStore((state) => state.items?.length || 0);
+
+  useEffect(() => {
+    // Get current session
+    supabase.auth.getSession().then(({ data }) => {
+      setEmail(data.session?.user.email ?? null);
+    });
+
+    // Listen for auth changes (login/logout)
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setEmail(session?.user.email ?? null);
+      },
+    );
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
 
   return (
     <div className="w-full dark:bg-amber-950 flex items-center justify-between p-2 border-b border-b-amber-200 dark:border-b-amber-700 sticky top-0 z-50 bg-white">
@@ -31,7 +49,7 @@ const AppNav = ({ isAuthenticated }: AppNavProps) => {
           Cart
         </Link>
 
-        {isAuthenticated && (
+        {email && (
           <Link href="/profile" className="p-4">
             Profile
           </Link>
@@ -49,7 +67,7 @@ const AppNav = ({ isAuthenticated }: AppNavProps) => {
 
         </div>
 
-        {/*{isAuthenticated ? (
+        {email ? (
           <>
             <span className="text-sm">{email}</span>
             <LogoutButton />
@@ -58,7 +76,7 @@ const AppNav = ({ isAuthenticated }: AppNavProps) => {
           <>
             <Link href="/login">Login</Link>
           </>
-        )}*/}
+        )}
 
         <Button
           variant="outline"
