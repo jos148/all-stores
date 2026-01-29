@@ -1,11 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/lib/supabase/client";
+import { getSupabaseClient } from "@/lib/supabase/client";
+
+
 
 export const dynamic = "force-dynamic";
 
 export default function LogoutButton() {
+  const supabase = getSupabaseClient();
   const handleLogout = async () => {
     await supabase.auth.signOut();
     window.location.href = "/login";

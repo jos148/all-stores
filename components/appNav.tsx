@@ -7,11 +7,14 @@ import Link from "next/link";
 import LogoutButton from "@/app/components/LogoutButton";
 import { useCartStore } from "@/lib/cart-store";
 import { useState } from "react";
-import { supabase } from "@/lib/supabase/client";
 import { useEffect } from "react";
+import { getSupabaseClient } from "@/lib/supabase/client";
+
 
 
 const AppNav = () => {
+  const supabase = getSupabaseClient();
+
   const { theme, setTheme } = useTheme();
   const [email, setEmail] = useState<string | null>(null);
   const totalItems = useCartStore((state) => state.items?.length || 0);

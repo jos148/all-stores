@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -13,11 +12,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getSupabaseClient } from "@/lib/supabase/client";
+
+
 
 export const dynamic = "force-dynamic";
 
 
 export default function ProfilePage() {
+  const supabase = getSupabaseClient();
 
   // Auth fields
   const [email, setEmail] = useState<string | null>(null);

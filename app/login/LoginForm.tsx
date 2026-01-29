@@ -1,6 +1,5 @@
 "use client";
 
-import { supabase } from "@/lib/supabase/client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +14,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import Link from "next/link";
+import { getSupabaseClient } from "@/lib/supabase/client";
+
+
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +24,7 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const supabase = getSupabaseClient();
 
   const handleLogin = async () => {
     setLoading(true);

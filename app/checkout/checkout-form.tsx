@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useCartStore } from "@/lib/cart-store";
+import { getSupabaseClient } from "@/lib/supabase/client";
+
+
+
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +25,7 @@ function generateReceiptCode(length = 8) {
 
 export default function CheckoutPage() {
   const { items, clear } = useCartStore();
+  const supabase = getSupabaseClient();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
