@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 
+export const dynamic = "force-dynamic";
+
 export default function ReceiptPage() {
   const { receiptCode } = useParams<{ receiptCode: string }>();
 

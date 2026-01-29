@@ -8,12 +8,13 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+export const dynamic = "force-dynamic";
 
 
 export default function ProfilePage() {

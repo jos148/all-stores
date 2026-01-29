@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useCartStore } from "@/lib/cart-store";
 
+export const dynamic = "force-dynamic";
+
 
 function generateReceiptCode(length = 8) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

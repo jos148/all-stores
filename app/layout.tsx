@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner"
 import AppNavWrapper from "./components/AppNavWrapper";
 import Footer from "./components/footer";
-//import SupabaseProvider from "@/lib/supabase/provider";
 
 
 export const metadata: Metadata = {
@@ -26,13 +25,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/*<SupabaseProvider>*/}
           <div className="flex min-h-screen flex-col">
             <AppNavWrapper />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
-          {/*</SupabaseProvider>*/}
         </ThemeProvider>
         <Toaster />
       </body>
