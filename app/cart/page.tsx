@@ -2,10 +2,8 @@ import CartList from "./CartList";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
 function BreadcrumbBasic() {
